@@ -5,20 +5,22 @@
     box-sizing: border-box;
 }
 
-body {
-    background: rgb(137, 173, 205);
-background: linear-gradient(335deg, rgba(37,35,46,1) 20%, rgb(132, 159, 226) 95%);
+
+
+html, body {
+    margin: 0;
+    min-height: 60%;
+    background-color: #585154;
+    background: linear-gradient(335deg, rgba(37,35,46,1) 20%, rgb(132, 159, 226) 95%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-/* body {
-    background: rgb(37,35,46);
-background: linear-gradient(336deg, rgb(51, 48, 65) 35%, rgb(169, 78, 139) 95%);
-}  */
 
-/* body {
-    background: rgb(37,35,46);
-    background: linear-gradient(351deg, rgba(37,35,46,1) 16%, rgba(209,193,129,1) 95%);
-} */
+
+
+
 
 #header {
     width: 100%;
@@ -117,6 +119,17 @@ nav ul li a:hover::after {
     z-index: 1; /* Ensures image is above the glow effect */
 }
 
+.about-col-2 img {
+    width: 100%;
+    border-radius: 15px; /* Keep your current border radius */
+    padding: 5px; /* Space between image and border */
+    background: linear-gradient(135deg, #383336, #1f2f2c); /* Gradient border */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    position: relative;
+    z-index: 1; /* Ensures image is above the glow effect */
+    top: -200px;
+}
+
 .row {
     display: flex;
     justify-content: space-between;
@@ -124,6 +137,11 @@ nav ul li a:hover::after {
 }
 
 .about-col-2 {
+    flex-basis: 65%;
+    padding: 0 20% 0 0;
+}
+
+.about-col-3 {
     flex-basis: 65%;
     padding: 0 20% 0 0;
 }
@@ -137,13 +155,28 @@ nav ul li a:hover::after {
     top: -100px;
 }
 
+.sub-title2 {
+    font-size: 60px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    top: -200px;
+}
+
 .sub-para {
     font-size: 100px;
     font-weight: 350;
     position: relative;
-    top: -80px;
+    top: -150px;
 }
 
+.sub-para2 {
+    font-size: 100px;
+    font-weight: 350;
+    position: relative;
+    top: -250px;
+}
 
 
 
@@ -178,4 +211,107 @@ nav ul li a:hover::after {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: -20px;
+    padding: 10px 20px;
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    /* font-weight: bold; */
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: rgb(132, 159, 226);
+    transform: scale(1.05);
+}
+
+
+/* Project Header Section */
+.project-header {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Container for Alignment */
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Row Styling */
+.project-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Image Styling */
+.project-image {
+    flex-basis: 30%; /* Image takes 40% of the row */
+    text-align: center;
+    margin-left: -100px; /* Move image to the left */
+    margin-top: 100px;
+
+}
+
+.project-image img {
+    width: 200%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Details Section */
+.project-details {
+    flex-basis: 55%; /* Text takes 55% of the row */
+    text-align: left;
+    padding: 20px;
+}
+
+/* Title Styling */
+.project-title {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Description Styling */
+.project-description {
+    font-size: 25px;
+    color: #000000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-details {
+        padding: 0;
+    }
+
+    .project-image img {
+        max-width: 300px;
+    }
 }
