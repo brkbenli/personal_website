@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - Berkay Benli</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0e1a;
+            --secondary-bg: #1a1f2e;
+            --accent-color: #64ffda;
+            --accent-hover: #4db6ac;
+            --text-primary: #ffffff;
+            --text-secondary: #8892b0;
+            --card-bg: rgba(26, 31, 46, 0.8);
+            --border-color: rgba(100, 255, 218, 0.1);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-20px); }
+            50% { transform: translateX(20px) translateY(20px); }
+            75% { transform: translateX(-10px) translateY(10px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .logo-text h2 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Back Button */
+        .back-btn {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: var(--text-primary);
+        }
+
+        /* Work Experience Section */
+        .experience-section {
+            padding: 8rem 5% 4rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .experience-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-hover));
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .experience-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experience-item:nth-child(odd) .experience-content {
+            margin-right: 60%;
+            text-align: right;
+        }
+
+        .experience-item:nth-child(even) .experience-content {
+            margin-left: 60%;
+            text-align: left;
+        }
+
+        .experience-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .experience-item:nth-child(odd) .experience-content::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid var(--card-bg);
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .experience-item:nth-child(even) .experience-content::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-right: 15px solid var(--card-bg);
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .experience-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
+
+        .experience-marker {
+            position: absolute;
+            left: 50%;
+            top: 50px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid var(--primary-bg);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-description {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .job-description li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .experience-timeline::before {
+                left: 30px;
+            }
+
+            .experience-item:nth-child(odd) .experience-content,
+            .experience-item:nth-child(even) .experience-content {
+                margin-left: 80px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .experience-item:nth-child(odd) .experience-content::after,
+            .experience-item:nth-child(even) .experience-content::after {
+                left: -15px;
+                right: auto;
+                border-right: 15px solid var(--card-bg);
+                border-left: none;
+            }
+
+            .experience-date {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .experience-marker {
+                left: 30px;
+            }
+
+            .experience-section {
+                padding: 4rem 2rem 2rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="personal-portfolio-img/images/berkaybenlilogo2.png" class="logo" alt="Berkay Benli Logo">
+                <div class="logo-text">
+                    <h2>Berkay Benli</h2>
+                    <p>Computing Science Honours</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a></li>
+                <li><a href="https://github.com/brkbenli" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a></li>
+                <li><a href="https://www.linkedin.com/in/berkayibenli/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a></li>
+                <li><a href="personal-portfolio-img/Resume_Berkay_Benli.pdf" target="_blank">
+                    <i class="fas fa-file-alt"></i> Resume
+                </a></li>
+                <li><a href="mailto:benli@ualberta.ca">
+                    <i class="fas fa-envelope"></i> Contact
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="experience-section">
+        <div class="container">
+            <h1 class="section-title">Work Experience</h1>
+            <p class="section-subtitle">My professional journey in technology and AI</p>
+            
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">May 2025 – Present</div>
+                    <div class="experience-marker"></div>
+                    <div class="experience-content">
+                        <h3 class="company-name">Outlier AI</h3>
+                        <h4 class="job-title">AI Prompt Engineer and Front-End Evaluator</h4>
+                        <p class="job-location">Remote</p>
+                        <ul class="job-description">
+                            <li>Engineered natural-language prompts to elicit functional front-end code responses from LLMs, focusing on HTML/CSS/JS.</li>
+                            <li>Led multi-turn conversations with models to iterate on UI/UX improvements, bug fixes, and new feature implementations.</li>
+                            <li>Authored rubrics to evaluate LLM output against clearly defined frontend requirements, emphasizing clarity, technical precision, and visual fidelity.</li>
+                            <li>Tracked model performance over time, identifying failure cases and providing structured feedback to enhance model capabilities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Jan 2025 – May 2025</div>
+                    <div class="experience-marker"></div>
+                    <div class="experience-content">
+                        <h3 class="company-name">Mercor AI</h3>
+                        <h4 class="job-title">Computing Science Expert</h4>
+                        <p class="job-location">Remote</p>
+                        <ul class="job-description">
+                            <li>Assessed the correctness, completeness, and clarity of AI-generated solutions to STEM questions, ensuring alignment with expert-level reasoning and academic standards.</li>
+                            <li>Evaluated step-by-step solutions in mathematics, and computer science for factual accuracy, logical consistency, and appropriate formatting.</li>
+                            <li>Applied formal evaluation criteria to provide detailed feedback on AI output quality, including grading explanations, identifying logical fallacies, and verifying mathematical correctness.</li>
+                            <li>Contributed to iterative improvement of AI guidelines by highlighting ambiguities and edge cases in response standards.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Jan 2024 – May 2024</div>
+                    <div class="experience-marker"></div>
+                    <div class="experience-content">
+                        <h3 class="company-name">UAStarr Alberta Rocket Research</h3>
+                        <h4 class="job-title">Software Team Member</h4>
+                        <p class="job-location">Edmonton, AB</p>
+                        <ul class="job-description">
+                            <li>Contributed to the design and development of the UASTARR website, fixing bugs, implementing features, and improving user experience.</li>
+                            <li>Enhanced rocket tracking accuracy by 12% through the integration of efficient tracking algorithms, including Kalman filtering, and optimized code performance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Sep 2023 – Dec 2023</div>
+                    <div class="experience-marker"></div>
+                    <div class="experience-content">
+                        <h3 class="company-name">AlbertaSat</h3>
+                        <h4 class="job-title">Software Team Member</h4>
+                        <p class="job-location">Edmonton, AB</p>
+                        <ul class="job-description">
+                            <li>Helped develop an open-source React web application with a RESTful API backend for CubeSat satellite communication.</li>
+                            <li>Wrote a C script using the Sub-GHz radio driver on an STM32 board to receive and decode radio packets from a team-built rocket.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 14, 26, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 14, 26, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        // Animate experience items on scroll
+        const experienceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.experience-item').forEach(item => {
+            experienceObserver.observe(item);
+        });
+
+        // Auto-animate items with delay
+        setTimeout(() => {
+            document.querySelectorAll('.experience-item').forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('animate');
+                }, index * 200);
+            });
+        }, 500);
+    </script>
+</body>
+</html>
